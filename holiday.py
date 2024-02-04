@@ -1,5 +1,8 @@
 """A program that uses functions to calculate the total cost of a holiday
-based on the flight, accommodation and car rental costs."""
+based on the flight, accommodation and car rental costs.
+The flight costs depends on the chosen destination.
+Accommodation and car rental costs depend on the number of days
+inputted by the user"""
 
 def plane_cost(flight):
     """ Returns the flight price depending on the chosen destination.
@@ -37,7 +40,13 @@ def car_rental(car, day_price = 44):
     return car_total
 
 def holiday_cost(a, b, c):
-    """Calculates the holiday's total cost"""
+    """Calculates the holiday's total cost
+    
+    parameters: the values returned from the flight,
+    hotel and car rental functions
+    
+    returns the sum of the above mentioned functions"""
+
     holiday_total = a + b + c
     return holiday_total
 
@@ -49,6 +58,7 @@ def destination():
     print("3: Vienna (£65).\n")
 
 dot_line_delimiter = "-" * 80
+star_line_delimiter = "*" * 80
 
 city_flight_list = ["london", "paris", "vienna"]
 print("\nLet's calculate the cost of your holiday:\n")
@@ -78,7 +88,7 @@ while not rental_days.isnumeric():
     rental_days = input("How many days do you want to rent the vehicle for?: ")
 rental_days = int(rental_days)
 
-print(dot_line_delimiter)
+print("\n" + star_line_delimiter)
 
 flight_print = "The cost of the flight to "
 hotel_print = "The hotel stay for "
@@ -87,9 +97,12 @@ final_print = "The total cost of this holiday will be:"
 
 print(f"""\n{flight_print}{city_flight.capitalize()} is £{str(plane_cost(city_flight))}\n
 {dot_line_delimiter}""")
+
 print(f"""\n{hotel_print}{num_nights} nights will cost £{str(hotel_cost(num_nights))}\n
 {dot_line_delimiter}""")
+
 print(f"""\n{car_print}{rental_days} days will cost £{str(car_rental(rental_days))}\n
 {dot_line_delimiter}""")
+
 print(f"""\n{final_print} £{str(holiday_cost(hotel_cost(num_nights),
-                         car_rental(rental_days), plane_cost(city_flight)))}\n{dot_line_delimiter}\n""")
+        car_rental(rental_days), plane_cost(city_flight)))}\n\n{star_line_delimiter}\n""")
