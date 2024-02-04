@@ -43,39 +43,53 @@ def holiday_cost(a, b, c):
 
 def destination():
     """Destination menu"""
-    print("Please choose your preferred destination:")
+    print("Please choose your preferred destination:\n")
     print("1: London (£45),\n")
     print("2: Paris (£55),\n")
     print("3: Vienna (£65).\n")
 
-print("""This program will calculate the total
-       cost af your holiday based on your chosen destination: """)
+dot_line_delimiter = "-" * 80
+
+city_flight_list = ["london", "paris", "vienna"]
+print("\nLet's calculate the cost of your holiday:\n")
 
 destination()
-city_flight = input("Enter the destination city: ")
-while not city_flight.isalpha():
-    print("Enter the name of the city you want to fly to.")
-    city_flight = input("Enter the destination city: ")
-city_flight  = city_flight.lower()
+city_flight = input("\nEnter the destination city: ").lower()
 
-num_nights = input("How many nights do you want to stay at the hotel?: ")
+
+while city_flight not in city_flight_list:
+    print("\nEnter the name of the city you want to fly to.")
+    city_flight = input("Enter the destination city: ").lower()
+
+
+print(dot_line_delimiter)
+
+num_nights = input("\nHow many nights do you want to stay at the hotel?: ")
 while not num_nights.isnumeric():
-    print("Please enter a number (digit).")
+    print("\nPlease enter a number (digit).")
     num_nights = input("How many nights do you want to stay at the hotel?: ")
 num_nights = int(num_nights)
 
-rental_days = input("How many days do you want to rent the vehicle for?: ")
+print(dot_line_delimiter)
+
+rental_days = input("\nHow many days do you want to rent the vehicle for?: ")
 while not rental_days.isnumeric():
-    print("Please enter a number (digit).")
+    print("\nPlease enter a number (digit).")
     rental_days = input("How many days do you want to rent the vehicle for?: ")
 rental_days = int(rental_days)
 
-flight_print = "The cost of the flight to: "
+print(dot_line_delimiter)
+
+flight_print = "The cost of the flight to "
 hotel_print = "The hotel stay for "
 car_print = "Renting the car for "
 final_print = "The total cost of this holiday will be:"
-print(f"""{flight_print}{city_flight.capitalize()} is £{str(plane_cost(city_flight))}\n""")
-print(f"{hotel_print}{num_nights} nights will cost £{str(hotel_cost(num_nights))}\n")
-print(f"{car_print}{rental_days} days will cost £{str(car_rental(rental_days))}\n")
-print(f"""{final_print} £{str(holiday_cost(hotel_cost(num_nights), 
-                          car_rental(rental_days), plane_cost(city_flight)))}""")
+
+print(f"""\n{flight_print}{city_flight.capitalize()} is £{str(plane_cost(city_flight))}\n
+{dot_line_delimiter}""")
+print(f"""\n{hotel_print}{num_nights} nights will cost £{str(hotel_cost(num_nights))}\n
+{dot_line_delimiter}""")
+print(f"""\n{car_print}{rental_days} days will cost £{str(car_rental(rental_days))}\n
+{dot_line_delimiter}""")
+print(f"""\n{final_print} £{str(holiday_cost(hotel_cost(num_nights),
+                         car_rental(rental_days), plane_cost(city_flight)))}\n{dot_line_delimiter}\n""")
